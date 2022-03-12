@@ -6,28 +6,28 @@
         <ul class="nav__list">
           <li
             class="nav__item nav__item--tuner"
-            :class="{ 'nav__item--loaded': loaded }"
+            :class="{ 'nav__item--loaded': $store.state.loaded }"
             style="--order: 1"
           >
             <NuxtLink class="nav__link text-center" to="/tuner">Tuner</NuxtLink>
           </li>
           <li
             class="nav__item  nav__item--metronome"
-            :class="{ 'nav__item--loaded': loaded }"
+            :class="{ 'nav__item--loaded': $store.state.loaded }"
             style="--order: 2"
           >
             <NuxtLink class="nav__link text-center" to="/metronome">Metronome</NuxtLink>
           </li>
           <li
             class="nav__item  nav__item--record"
-            :class="{ 'nav__item--loaded': loaded }"
+            :class="{ 'nav__item--loaded': $store.state.loaded }"
             style="--order: 3"
           >
             <NuxtLink class="nav__link text-center" to="/record">Record</NuxtLink>
           </li>
           <li
             class="nav__item  nav__item--about"
-            :class="{ 'nav__item--loaded': loaded }"
+            :class="{ 'nav__item--loaded': $store.state.loaded }"
             style="--order: 4"
           >
             <NuxtLink class="nav__link text-center" to="/about-donate">About And Donate</NuxtLink>
@@ -39,16 +39,7 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return { loaded: false }
-  },
-  created() {
-    this.$nuxt.$on('loaded', () => {
-      this.loaded = true
-    })
-  }
-}
+export default {}
 </script>
 
 <style lang="postcss">
