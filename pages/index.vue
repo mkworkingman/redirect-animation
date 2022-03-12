@@ -5,11 +5,20 @@
       <nav class="nav">
         <ul class="nav__list">
           <li
+            @click="linkActivate('tuner')"
             class="nav__item nav__item--tuner"
-            :class="{ 'nav__item--loaded': $store.state.loaded }"
-            style="--order: 1"
+            :class="{
+              'nav__item--loaded': $store.state.loaded,
+              'nav__item--selected': linkAnimated === 'tuner'
+            }"
+            style="--order: 1;"
           >
-            <NuxtLink class="nav__link text-center" to="/tuner">Tuner</NuxtLink>
+            <NuxtLink
+              class="nav__link text-center"
+              to="/tuner"
+            >
+              Tuner
+            </NuxtLink>
           </li>
           <li
             class="nav__item  nav__item--metronome"
@@ -30,7 +39,7 @@
             :class="{ 'nav__item--loaded': $store.state.loaded }"
             style="--order: 4"
           >
-            <NuxtLink class="nav__link text-center" to="/about-donate">About And Donate</NuxtLink>
+            <NuxtLink class="nav__link text-center" to="/about">About</NuxtLink>
           </li>
         </ul>
       </nav>
@@ -39,7 +48,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      linkAnimated: null
+    }
+  },
+  methods: {
+    linkActivate(linkName) {
+      this.linkAnimated = linkName
+    }
+  },
+  transition: "page"
+}
 </script>
 
 <style lang="postcss">
@@ -81,6 +102,13 @@ export default {}
       &--loaded {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      &--selected {
+        width: 100vw;
+        height: 200vh;
+        border-radius: 0;
+        margin-left: calc((100% - 100vw) / 2);
       }
 
       &--tuner {
