@@ -1,0 +1,47 @@
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background-image: linear-gradient(90deg, red, blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+  position: relative;
+  cursor: default;
+  user-select: none;
+
+  &::before {
+    content: attr(txt);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg, #49b16c, #41758d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    pointer-events: none;
+    opacity: 0;
+    animation: titleOpacity 4s linear .5s infinite;
+  }
+
+  &::after {
+    content: attr(txt);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: black;
+    z-index: -1;
+    text-shadow: 0.025em 0.025em 0 #1a7aa2, 0.05em 0.05em 0 #135b79, 0.075em 0.075em 0 #0d3d51, 0.1em 0.1em 0 #061e28;
+  }
+}
+
+@keyframes titleOpacity {
+  0% { opacity: 0 }
+  25% { opacity: 1 }
+  75% { opacity: 1 }
+  100% { opacity: 0 }
+}
