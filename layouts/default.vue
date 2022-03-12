@@ -1,7 +1,7 @@
 <template>
-  <div class="main-wrapper">
+  <div>
     <Nuxt />
-    <div id="test" class="loading" :class="{ 'loading--loaded': loaded }"></div>
+    <div class="loading" :class="{ 'loading--loaded': loaded }"></div>
   </div>
 </template>
 

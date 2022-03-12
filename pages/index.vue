@@ -1,39 +1,41 @@
 <template>
-  <header class="container">
-    <h1 class="logo mx-auto" txt="MyCoolTuner">MyCoolTuner</h1>
-    <nav class="nav">
-      <ul class="nav__list">
-        <li
-          class="nav__item nav__item--tuner"
-          :class="{ 'nav__item--loaded': loaded }"
-          style="--order: 1"
-        >
-          <NuxtLink class="nav__link text-center" to="/tuner">Tuner</NuxtLink>
-        </li>
-        <li
-          class="nav__item  nav__item--metronome"
-          :class="{ 'nav__item--loaded': loaded }"
-          style="--order: 2"
-        >
-          <NuxtLink class="nav__link text-center" to="/metronome">Metronome</NuxtLink>
-        </li>
-        <li
-          class="nav__item  nav__item--record"
-          :class="{ 'nav__item--loaded': loaded }"
-          style="--order: 3"
-        >
-          <NuxtLink class="nav__link text-center" to="/record">Record</NuxtLink>
-        </li>
-        <li
-          class="nav__item  nav__item--about"
-          :class="{ 'nav__item--loaded': loaded }"
-          style="--order: 4"
-        >
-          <NuxtLink class="nav__link text-center" to="/about-donate">About And Donate</NuxtLink>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <div class="main-wrapper">
+    <header class="container">
+      <h1 class="logo mx-auto" txt="MyCoolTuner">MyCoolTuner</h1>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li
+            class="nav__item nav__item--tuner"
+            :class="{ 'nav__item--loaded': loaded }"
+            style="--order: 1"
+          >
+            <NuxtLink class="nav__link text-center" to="/tuner">Tuner</NuxtLink>
+          </li>
+          <li
+            class="nav__item  nav__item--metronome"
+            :class="{ 'nav__item--loaded': loaded }"
+            style="--order: 2"
+          >
+            <NuxtLink class="nav__link text-center" to="/metronome">Metronome</NuxtLink>
+          </li>
+          <li
+            class="nav__item  nav__item--record"
+            :class="{ 'nav__item--loaded': loaded }"
+            style="--order: 3"
+          >
+            <NuxtLink class="nav__link text-center" to="/record">Record</NuxtLink>
+          </li>
+          <li
+            class="nav__item  nav__item--about"
+            :class="{ 'nav__item--loaded': loaded }"
+            style="--order: 4"
+          >
+            <NuxtLink class="nav__link text-center" to="/about-donate">About And Donate</NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </div>
 </template>
 
 <script>
@@ -52,10 +54,6 @@ export default {
 <style lang="postcss">
   @custom-media --tablet (min-width: 48rem);
   @custom-media --desktop (min-width: 64rem);
-
-  /* :root {
-    --bg: var(--reflection);
-  } */
 </style>
 <style lang="postcss" scoped>
   .container {
