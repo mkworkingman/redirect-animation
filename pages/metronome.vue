@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrapper">
     <article class="container">
-      <header><h1>Tuner</h1></header>
+      <header><h1>Metronome</h1></header>
       <h3>Test123</h3>
       <p style="color: #e2e2e2;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit facere amet tenetur quasi, quia, qui vel, adipisci eveniet quam suscipit animi doloremque modi maxime odit?</p>
     </article>
@@ -14,7 +14,7 @@ export default {}
 
 <style lang="postcss" scoped>
   .main-wrapper {
-    background: var(--bg-tuner);
+    background: var(--bg-metronome);
   }
 
   .container {
@@ -26,8 +26,4 @@ export default {}
       opacity: 0;
     }
   }
-
-  /* .page-leave-active {
-    transition: all 1000ms;
-  } */
 </style>

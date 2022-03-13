@@ -23,7 +23,8 @@ export default {
     '@/assets/style/colors',
     '@/assets/style/logo',
     '@/assets/style/fonts',
-    '@/assets/style/layout-blocks'
+    '@/assets/style/layout-blocks',
+    '@/assets/style/transitions'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

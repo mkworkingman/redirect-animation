@@ -3,43 +3,57 @@
     <header class="container">
       <h1 class="logo mx-auto" txt="MyCoolTuner">MyCoolTuner</h1>
       <nav class="nav">
-        <ul class="nav__list">
+        <ul
+          class="nav__list"
+          :class="{ 'nav__list--loaded': $store.state.loaded }"
+        >
           <li
-            @click="linkActivate('tuner')"
             class="nav__item nav__item--tuner"
-            :class="{
-              'nav__item--loaded': $store.state.loaded,
-              'nav__item--selected': linkAnimated === 'tuner'
-            }"
-            style="--order: 1;"
+            :class="{ 'nav__item--selected': linkAnimated === 'tuner' }"
           >
             <NuxtLink
               class="nav__link text-center"
-              to="/tuner"
+              to="/"
+              @click.prevent.native="redirect('tuner')"
             >
               Tuner
             </NuxtLink>
           </li>
           <li
             class="nav__item  nav__item--metronome"
-            :class="{ 'nav__item--loaded': $store.state.loaded }"
-            style="--order: 2"
+            :class="{ 'nav__item--selected': linkAnimated === 'metronome' }"
           >
-            <NuxtLink class="nav__link text-center" to="/metronome">Metronome</NuxtLink>
+            <NuxtLink
+              class="nav__link text-center"
+              to="/"
+              @click.prevent.native="redirect('metronome')"
+            >
+              Metronome
+            </NuxtLink>
           </li>
           <li
             class="nav__item  nav__item--record"
-            :class="{ 'nav__item--loaded': $store.state.loaded }"
-            style="--order: 3"
+            :class="{ 'nav__item--selected': linkAnimated === 'record' }"
           >
-            <NuxtLink class="nav__link text-center" to="/record">Record</NuxtLink>
+            <NuxtLink
+              class="nav__link text-center"
+              to="/"
+              @click.prevent.native="redirect('record')"
+            >
+              Record
+            </NuxtLink>
           </li>
           <li
             class="nav__item  nav__item--about"
-            :class="{ 'nav__item--loaded': $store.state.loaded }"
-            style="--order: 4"
+            :class="{ 'nav__item--selected': linkAnimated === 'about' }"
           >
-            <NuxtLink class="nav__link text-center" to="/about">About</NuxtLink>
+            <NuxtLink
+              class="nav__link text-center"
+              to="/"
+              @click.prevent.native="redirect('about')"
+            >
+              About
+            </NuxtLink>
           </li>
         </ul>
       </nav>
@@ -55,8 +69,11 @@ export default {
     }
   },
   methods: {
-    linkActivate(linkName) {
-      this.linkAnimated = linkName
+    redirect(name) {
+      this.linkAnimated = name
+      this.$router.push({
+        path: '/' + name
+      })
     }
   },
   transition: "page"
@@ -89,26 +106,30 @@ export default {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-    }
-
-    &__item {
       opacity: 0;
       transform: translateY(40px);
-      border-radius: 0.5rem;
       transition: opacity 500ms, transform 500ms;
-      transition-delay: calc(var(--order, 1) * 120ms);
-      color: #161616;
 
       &--loaded {
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    &__item {
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      color: #161616;
+      transition: all 800ms;
 
       &--selected {
-        width: 100vw;
-        height: 200vh;
+        height: calc(100vh + 250px);
         border-radius: 0;
-        margin-left: calc((100% - 100vw) / 2);
+        margin-inline: calc((100% - 100vw) / 2);
+
+        .nav__link {
+          opacity: 0;
+        }
       }
 
       &--tuner {
@@ -134,6 +155,16 @@ export default {
       padding-block: 0.5rem;
       cursor: pointer;
       color: currentColor;
+      transition: opacity 400ms;
     }
+  }
+
+  .page-leave-active {
+    transition: all 650ms;
+  }
+
+  .page-enter-from,
+  .page-leave-to {
+    /* opacity: 0; */
   }
 </style>
