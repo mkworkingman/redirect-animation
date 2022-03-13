@@ -90,12 +90,8 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    max-width: 24rem;
+    max-width: 20rem;
     box-sizing: content-box;
-
-    @media (--desktop) {
-      box-sizing: border-box;
-    }
   }
 
   .nav {
@@ -160,7 +156,7 @@ export default {
   }
 
   .page-leave-active {
-    transition: all 650ms;
+    transition: all 800ms;
   }
 
   .page-enter-from,
