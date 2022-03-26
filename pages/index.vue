@@ -68,6 +68,10 @@ export default {
       linkAnimated: null
     }
   },
+  beforeRouteLeave(to, from, next) {
+    this.linkAnimated = to.path.substring(1)
+    next()
+  },
   methods: {
     redirect(name) {
       this.linkAnimated = name
