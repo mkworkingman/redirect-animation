@@ -13,7 +13,7 @@
           >
             <NuxtLink
               class="nav__link text-center"
-              to="/"
+              to="/tuner"
               @click.prevent.native="redirect('tuner')"
             >
               Tuner
@@ -25,7 +25,7 @@
           >
             <NuxtLink
               class="nav__link text-center"
-              to="/"
+              to="/metronome"
               @click.prevent.native="redirect('metronome')"
             >
               Metronome
@@ -37,7 +37,7 @@
           >
             <NuxtLink
               class="nav__link text-center"
-              to="/"
+              to="/record"
               @click.prevent.native="redirect('record')"
             >
               Record
@@ -49,7 +49,7 @@
           >
             <NuxtLink
               class="nav__link text-center"
-              to="/"
+              to="/about"
               @click.prevent.native="redirect('about')"
             >
               About
