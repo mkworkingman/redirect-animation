@@ -1,15 +1,8 @@
 <template>
   <div>
-    <div
-      class="main-wrapper"
-      :class="{
-        'pointer-events-none': goTo,
-        'fade-out': goTo === 'home',
-        'toPost': goTo === 'tunerPost'
-      }"
-    >
+    <div class="main-wrapper">
       <article class="container">
-        <header><h1>Tuner</h1></header>
+        <header><h1 class="testcolor">Tuner</h1></header>
         <h3>Test123</h3>
         <p style="color: #e2e2e2;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit facere amet tenetur quasi, quia, qui vel, adipisci eveniet quam suscipit animi doloremque modi maxime odit?</p>
         <NuxtLink
@@ -60,37 +53,49 @@
 export default {
   data() {
     return {
-      goTo: null
+      from: null,
+      goTo: null,
     }
   },
-  beforeRouteLeave(to, from, next) {
-    if (to.path === '/') this.goTo = 'home'
-    if (to.path.includes('/tuner/post/')) this.goTo = 'tunerPost'
-    next()
+  mounted () {
+    document.body.classList.add('bg-tuner')
   },
+  destroyed () {
+    document.body.classList.remove('bg-tuner')
+  },
+  // beforeRouteLeave(to, from, next) {
+  //   if (to.path === '/') this.goTo = 'home'
+  //   if (to.path.includes('/tuner/post/')) this.goTo = 'tunerPost'
+  //   next()
+  // }
 }
 </script>
 
 <style lang="postcss" scoped>
+  body {
+    background: var(--bg-tuner);
+  }
+
   .main-wrapper {
     background: var(--bg-tuner);
     transition: opacity 450ms;
     perspective: 1000px;
-  }
-
-  .fade-out {
-    opacity: 0;
-    pointer-events: none;
+    padding: 20px;
+    position: absolute;
+    inset: 0;
   }
 
   .toPost .container {
-    /* transform: rotateY(-90deg); */
+    transform: translateX(-100vw);
   }
 
   .container {
     transition: all 400ms;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    height: 250px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .page-enter-active {
@@ -183,6 +188,44 @@ export default {
   }
 
   .page-leave-active {
-    transition: all 450ms;
+    transition: all 450ms linear;
+
+    .main-wrapper:not(.main-wrapper-menu) {
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+  }
+
+  .tuner-leave-active {
+    transition: all 400ms;
+    transform: translateX(-100%);
+  }
+
+  .tuner-leave {
+    transform: translateX(0);
+  }
+
+  /* Infinite scroll */
+  /* .tuner-enter-active {
+    transition: all 400ms;
+    transform: translateX(0);
+  }
+
+  .tuner-enter {
+    transform: translateX(100vw);
+  } */
+  
+  .tuner-enter-active {
+    transition: all 400ms;
+    transform: translateX(0);
+  }
+
+  .tuner-enter {
+    transform: translateX(-100%);
+  }
+
+  .bg {
+    background: var(--bg-tuner);
   }
 </style>

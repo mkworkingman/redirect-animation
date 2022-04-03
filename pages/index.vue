@@ -80,7 +80,7 @@ export default {
       })
     }
   },
-  transition: "page"
+  transition: "page",
 }
 </script>
 

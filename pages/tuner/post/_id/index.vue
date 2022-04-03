@@ -7,7 +7,7 @@
       <article class="container">
         <header><h1>Tuner</h1></header>
         <h3>Post "{{ $route.params.id }}"</h3>
-        <p style="color: #e2e2e2;">Lorem ipsum.</p>
+        <p class="testcolor">Lorem ipsum.</p>
         <NuxtLink
           class="nav__link text-center"
           to="/tuner"
@@ -53,18 +53,35 @@ export default {
       goTo: null
     }
   },
-  beforeRouteLeave(to, from, next) {
-    if (to.path === '/') this.goTo = 'home'
-    next()
+  mounted () {
+    document.body.classList.add('bg-tuner')
   },
+  destroyed () {
+    document.body.classList.remove('bg-tuner')
+  },
+  transition: {
+    name: "tuner",
+    mode: "",
+  }
 }
 </script>
 
 <style lang="postcss" scoped>
+  body {
+    background: var(--bg-tuner);
+  }
+
   .main-wrapper {
     background: var(--bg-tuner);
     transition: opacity 450ms;
     perspective: 1000px;
+    padding: 20px;
+    position: absolute;
+    inset: 0;
+  }
+
+  .testcolor {
+    color: darkmagenta;
   }
 
   .fade-out {
@@ -72,18 +89,25 @@ export default {
     pointer-events: none;
   }
 
+  .toPost .container {
+    /* transform: rotateY(-90deg); */
+  }
+
   .container {
     transition: all 400ms;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    height: 250px;
-    transform: rotateY(-360deg);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #6d858b;
   }
 
-  .page-enter-active {
+  /* .page-enter-active {
     .container {
-      /* transform: rotateY(-270deg); */
+      opacity: 0;
     }
-  }
+  } */
 
    .container-menu {
     height: 60vh;
@@ -169,6 +193,40 @@ export default {
   }
 
   .page-leave-active {
-    transition: all 450ms;
+    transition: all 450ms linear;
+
+    .main-wrapper:not(.main-wrapper-menu) {
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+  }
+
+  .tuner-enter-active {
+    transition: all 400ms;
+    transform: translateX(0);
+  }
+
+  .tuner-enter {
+    transform: translateX(100%);
+  }
+
+  /* Infinite scroll */
+  /* .tuner-leave-active {
+    transition: all 400ms;
+    transform: translateX(-100vw);
+  }
+
+  .tuner-leave {
+    transform: translateX(0);
+  } */
+
+  .tuner-leave-active {
+    transition: all 400ms;
+    transform: translateX(100%);
+  }
+
+  .tuner-leave {
+    transform: translateX(0);
   }
 </style>
