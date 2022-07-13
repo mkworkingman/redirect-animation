@@ -7,5 +7,3 @@ export const mutations = {
     state.loaded = loaded
   }
 }
-
-
